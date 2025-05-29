@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一志苑教育 - 通向世界一流大学的捷径</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #1a3e72;
+            color: white;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .slogan {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        nav {
+            background-color: #0d2b5a;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #f8b500;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 62, 114, 0.8), rgba(13, 43, 90, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #f8b500;
+            color: #1a3e72;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e6a800;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a3e72;
+            font-size: 32px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #f8b500;
+            margin: 15px auto 0;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .advantages {
+            background-color: #f0f4f9;
+        }
+        
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .advantage-card h3 {
+            color: #1a3e72;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .advantage-card .number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #f8b500;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .universities {
+            text-align: center;
+        }
+        
+        .country-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #e0e6ed;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            background-color: #1a3e72;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .university-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .university-item {
+            background-color: white;
+            padding: 15px 25px;
+            border-radius: 4px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+        }
+        
+        .contact-info {
+            background-color: #1a3e72;
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            color: #f8b500;
+            font-size: 20px;
+        }
+        
+        footer {
+            background-color: #0d2b5a;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <!-- 这里放置logo图片 -->
+                <img src="logo.png" alt="一志苑教育logo">
+                <div class="logo-text">一志苑教育</div>
+            </div>
+            <div class="slogan">一致努力 · 一志成就</div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#advantages">我们的优势</a></li>
+                <li><a href="#universities">目标院校</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>通向世界一流大学的捷径</h1>
+            <p>汇聚国内外顶尖国际教育资源，独家开发绿色升学通道，为精英家庭提供全阶段的国际教育规划与名校申请服务</p>
+            <a href="#contact" class="btn">免费咨询</a>
+        </div>
+    </section>
+    
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我们</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>一志苑教育致力于为学生规划一条通向世界一流大学的捷径。我们汇聚了国内外顶尖的国际教育资源，聚集了名校招生官、院校教授、著名校长、在职名师、世界名企导师等海外教育精英，与各大海外名校建立深度合作，独家开发绿色升学通道。</p>
+                    <p>以独具特色的名校申请、国际教育规划、独家特殊升学通道，满足精英家庭全阶段的国际教育需求。我们致力于为学生提供优质的海外教育资源助力学生个人发展，开启美好人生。</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="一志苑教育">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="advantages" class="advantages">
+        <div class="container">
+            <h2 class="section-title">我们的优势</h2>
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <h3><span class="number">1</span>独树一帜的海外名校资源</h3>
+                    <p>全球top前100的名校资源是招生办资源，熟知名校录取规律，拥有名校招生最新资讯，为每一位学子提供专业的升学辅导。</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="number">2</span>行业领先标准的团队服务模式</h3>
+                    <p>根据签约时间不同，为每一位学子匹配专属的服务老师，包括规划顾问、流程顾问、文科顾问，以及适合培训等服务模块的教师团队。</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="number">3</span>个性化定制的专属服务方案</h3>
+                    <p>为每一位学子打造专属教育培养方案，不仅管控学生在校GPA，指导核心考试准备，更能结合学生个性及特点，重塑定制课程方案。</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="number">4</span>强势力的原创内容研发</h3>
+                    <p>致力于开发针对全球强竞争力政策的原创内容，帮助学生真正意义上提升综合能力，辅导比赛，助力拿到国际级奖项。</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="number">5</span>留学成功不是最终成功</h3>
+                    <p>我们的追求远不止于让学子走入世界名校，在求学道路上让每一个学子通过教育获得的文化核心竞争力，才能自由选择和适应这个复杂多变的世界。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="universities" class="universities">
+        <div class="container">
+            <h2 class="section-title">目标院校</h2>
+            
+            <div class="country-tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'usa')">美国</button>
+                <button class="tab-btn" onclick="openTab(event, 'uk')">英国</button>
+                <button class="tab-btn" onclick="openTab(event, 'canada')">加拿大</button>
+                <button class="tab-btn" onclick="openTab(event, 'australia')">澳大利亚</button>
+                <button class="tab-btn" onclick="openTab(event, 'singapore')">新加坡</button>
+                <button class="tab-btn" onclick="openTab(event, 'hkmo')">港澳</button>
+            </div>
+            
+            <div id="usa" class="tab-content active">
+                <h3>美国顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">哈佛大学</div>
+                    <div class="university-item">宾夕法尼亚大学</div>
+                    <div class="university-item">耶鲁大学</div>
+                    <div class="university-item">普林斯顿大学</div>
+                    <div class="university-item">哥伦比亚大学</div>
+                    <div class="university-item">布朗大学</div>
+                    <div class="university-item">康奈尔大学</div>
+                    <div class="university-item">TOP50院校</div>
+                </div>
+            </div>
+            
+            <div id="uk" class="tab-content">
+                <h3>英国顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">剑桥大学</div>
+                    <div class="university-item">牛津大学</div>
+                    <div class="university-item">帝国理工学院</div>
+                    <div class="university-item">伦敦大学学院</div>
+                    <div class="university-item">伦敦经济学院</div>
+                    <div class="university-item">爱丁堡大学</div>
+                </div>
+            </div>
+            
+            <div id="canada" class="tab-content">
+                <h3>加拿大顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">多伦多大学</div>
+                </div>
+            </div>
+            
+            <div id="australia" class="tab-content">
+                <h3>澳大利亚顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">悉尼大学</div>
+                    <div class="university-item">墨尔本大学</div>
+                </div>
+            </div>
+            
+            <div id="singapore" class="tab-content">
+                <h3>新加坡顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">新加坡国立大学</div>
+                    <div class="university-item">南洋理工大学</div>
+                    <div class="university-item">新加坡管理大学</div>
+                </div>
+            </div>
+            
+            <div id="hkmo" class="tab-content">
+                <h3>港澳顶尖大学</h3>
+                <div class="university-list">
+                    <div class="university-item">香港大学</div>
+                    <div class="university-item">香港中文大学</div>
+                    <div class="university-item">香港科技大学</div>
+                    <div class="university-item">香港城市大学</div>
+                    <div class="university-item">香港理工大学</div>
+                    <div class="university-item">澳门大学</div>
+                    <div class="university-item">澳门科技大学</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            
+            <div class="contact-info">
+                <h3>专业护航 · 世界名校深入合作</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <p>北京市朝阳区十里堡1号恒泰大厦B座</p>
+                        <p>北京市顺义区金色河畔高尔夫练习场</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>185-1131-9649</div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-info-circle"></i>
+                    <div>服务对象：入读的大学有要求的，分数和背景暂时达不到官方录取标准的学生</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 一志苑教育 版权所有</p>
+            <p>一致努力 · 一志成就</p>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
